@@ -22,6 +22,6 @@ def movies_dao():
     movies_dao.get_by_year = MagicMock(return_value=Django_Unchained)
     movies_dao.create = MagicMock(return_value=Movie(name="Django_Uncharted"))
     movies_dao.update = MagicMock()
-    movies_dao.delete = MagicMock()
+    movies_dao.delete = MagicMock(return_value=True)  # Добавил возвращаемое значение
 
     return movies_dao

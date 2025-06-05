@@ -8,14 +8,16 @@ from dao.directors_dao import DirectorDAO
 def director_dao():
     director_dao = DirectorDAO()
 
-    Abdulla = Director(name="Abdulla")
-    Djafar = Director(name="Djafar")
-    Hasan = Director(name="Hasan")
+    # Исправил имена режиссёров
+    Q_Tarantino = Director(name="Quentin Tarantino")
+    T_Sheridan = Director(name="Taylor Sheridan")
+    V_Weinstock = Director(name="Vladimir Weinstock")
 
-    # director_dao.query = MagicMock()
-    director_dao._get_all = MagicMock(return_value=[Abdulla, Djafar, Hasan])
-    director_dao.get_one = MagicMock(return_value=Djafar)
-    director_dao.create = MagicMock(return_value=Director(name="Abdulla"))
+    # Исправил возвращаемые ответы
+    director_dao._get_all = MagicMock(return_value=[Q_Tarantino, T_Sheridan,
+                                                    V_Weinstock])
+    director_dao.get_one = MagicMock(return_value=T_Sheridan)
+    director_dao.create = MagicMock(return_value=Director(name="V_Weinstock"))
     director_dao.update = MagicMock()
     director_dao.delete = MagicMock()
 

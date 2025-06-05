@@ -1,4 +1,5 @@
 import pytest
+from unittest.mock import MagicMock
 
 from service.movies_serv import MovieService
 from conf.movies_conf import movies_dao
@@ -20,6 +21,8 @@ class TestMovieService:
         assert movie is not None
         assert movie.title is not None
         assert movie.title == "Yellowstone"
+        assert movie.id == 1  # Добавил проверку id
+
 
 
     def test_by_director(self):
@@ -29,9 +32,10 @@ class TestMovieService:
         assert movies.title is not None
         assert movies.title == "The Hateful Eight"
         assert movies.id == 2
+        assert movies.director_id == 2  # Добавил проверку director_id
 
     def test_by_genre(self):
-        movies = self.movie_service.get_by_genre_id(1)
+        movies = self.movie_service.get_by_genre(1)
 
         assert movies is not None
         assert movies.title is not None
@@ -44,6 +48,7 @@ class TestMovieService:
         assert movie is not None
         assert movie.title is not None
         assert movie.title == "The Hateful Eight"
+        assert movie.year == 2015  # Добавил проверку director_id
 
     def test_create(self):
         movie_d = {
@@ -59,6 +64,9 @@ class TestMovieService:
         movie = self.movie_service.create(movie_d)
 
         assert movie.title is not None
+        assert movie.title == "Yellowstone"   # Добавил проверку
+        assert movie.year == 2018  # Добавил проверку
+        assert movie.rating == 8.6  # Добавил проверку
 
     def test_update(self):
         movie_d = {
@@ -72,7 +80,10 @@ class TestMovieService:
             "director_id": 2
         }
 
-        self.movie_service.update(movie_d)
+        movie = self.movie_service.update(movie_d)
+        assert movie.title is not None   # Добавил проверку
+        assert movie.title == "Django Unchained"   # Добавил проверку
 
-    def test_delete(self):
-        self.movie_service.delete(1)
+
+    def test_delete(self):  # Исправил этот метод
+        result = self.movie_service.delete(1)

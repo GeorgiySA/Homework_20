@@ -19,3 +19,32 @@ class TestDirectorService:
 
         assert director is not None
         assert director.name is not None
+
+    # Добавил этот тест
+    def test_create(self):
+        director_d = {
+            "id": 2,
+            "name": "Quentin Tarantino"
+        }
+
+        director = self.director_service.create(director_d)
+
+        assert director is not None
+        assert director.id == 2
+        assert director.name == "Quentin Tarantino"
+
+    # Добавил этот тест
+    def test_update(self):
+        director_d = {
+            "id": 1,
+            "name": "Taylor Sheridan"
+        }
+
+        director = self.director_service.create(director_d)
+
+        assert director is not None
+        assert director.id == 1
+
+    # Добавил этот тест
+    def test_delete(self):
+        res = self.director_service.delete(1)

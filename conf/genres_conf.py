@@ -14,8 +14,8 @@ def genres_dao():
 
     genres_dao.get_all = MagicMock(return_value=[adventures, comedy, anime])
     genres_dao.get_one = MagicMock(return_value=adventures)
-    # genres_dao.create = MagicMock(return_value=Genre(name="comedy"))
-    # genres_dao.update = MagicMock()
-    # genres_dao.delete = MagicMock()
+    genres_dao.create = MagicMock(return_value=Genre(name="comedy"))
+    genres_dao.update = MagicMock()
+    genres_dao.delete = MagicMock()
 
     return genres_dao

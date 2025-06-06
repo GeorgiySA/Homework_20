@@ -48,3 +48,6 @@ class TestGenreService:
     # Добавил этот тест
     def test_delete(self):
         res = self.genre_service.delete(1)
+
+        assert res.status_code == 200
+        assert res.status_code == 204

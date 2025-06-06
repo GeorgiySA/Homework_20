@@ -87,3 +87,6 @@ class TestMovieService:
 
     def test_delete(self):  # Исправил этот метод
         result = self.movie_service.delete(1)
+
+        assert result.status_code == 200
+        assert result.status_code == 204
